@@ -10,9 +10,9 @@ const App = () => (
   <Router>
     <Suspense fallback={<Spinner/>}>
       <Switch>
-        <Route path="/issue-details" component={IssueDetails} />
-        <Route exact path="/:page" component={HomePage} />
-        <Redirect exact from='/'  to='/1' />
+        <Route path="/:issueId/issue-details" component={IssueDetails} />
+        <Route  path="/:page" component={HomePage} />
+        <Redirect from='/'  to='/1' />
       </Switch>
     </Suspense>
   </Router>
