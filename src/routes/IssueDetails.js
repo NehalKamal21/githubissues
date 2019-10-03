@@ -1,14 +1,38 @@
-import React, {useEffect} from 'react';
-import {withRouter} from 'react-router-dom'
-import { issueDetails } from "../api";
-
-
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom'
+import { issueDetails, issueComments } from "../api";
+import ReactMarkdown from 'react-markdown';
+import Spinner from '../components/Spinner'
+import './routers.css'
 const IssueDetails = props => {
+    const [comments, setComments] = useState(null);
+    const [issue, setIssue] = useState(null);
     useEffect(() => {
-        issueDetails(props.match.params.issueId).then(console.log);
-    });
-    return(
-    <div>Issue details</div>
-)}
+        // setIssue(props.location.state.issue)
+        issueDetails(props.match.params.issueId).then(res => {
+            setIssue(res.data);
+        });
+        issueComments(props.match.params.issueId).then(res => {
+            setComments(res.data);
+        });
+        // eslint-disable-next-line
+    }, []);
+    return (
+        <div>
+            {
+                (comments && issue)? <div className='container'>
+                    <h1 className='title'>
+                        {issue.title}
+                    </h1>
+                    <div className='issue-body'>
+                        <ReactMarkdown source={issue.body} escapeHtml={false} />
+                    </div>
+                    <div></div>
+                </div> :
+                    <Spinner />
+            }
+        </div>
+    )
+}
 
 export default withRouter(IssueDetails);
