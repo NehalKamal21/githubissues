@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom'
-import { issueDetails } from "../api";
+import { issueDetails, issueComments } from "../api";
 import ReactMarkdown from 'react-markdown';
+import Spinner from '../components/Spinner'
 import './routers.css'
 const IssueDetails = props => {
-    const [details, setDetails] = useState(null);
+    const [comments, setComments] = useState(null);
     const [issue, setIssue] = useState(null);
     useEffect(() => {
-        setIssue(props.location.state.issue)
+        // setIssue(props.location.state.issue)
         issueDetails(props.match.params.issueId).then(res => {
-            setDetails(res.data);
+            setIssue(res.data);
+        });
+        issueComments(props.match.params.issueId).then(res => {
+            setComments(res.data);
         });
         // eslint-disable-next-line
     }, []);
     return (
         <div>
             {
-                details && <div className='container'>
+                (comments && issue)? <div className='container'>
                     <h1 className='title'>
                         {issue.title}
                     </h1>
@@ -24,7 +28,8 @@ const IssueDetails = props => {
                         <ReactMarkdown source={issue.body} escapeHtml={false} />
                     </div>
                     <div></div>
-                </div>
+                </div> :
+                    <Spinner />
             }
         </div>
     )
