@@ -7,6 +7,6 @@ export const issuesPerPage = (page = 1) =>
 
 export const issueDetails = issueId =>
     axios.get(
-    `https://api.github.com/repos/facebook/create-react-app/issues/${issueId}`
+    `https://api.github.com/repos/facebook/create-react-app/issues/${issueId}/comments`
     );
 

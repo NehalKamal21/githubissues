@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { issuesPerPage } from "../api";
 import Label from '../components/LabelComponent';
@@ -24,15 +24,36 @@ const labels = [
 
 
 const HomePage = props => {
+    const [issues, setIssues] = useState(null)
+    const NavigateTo = (issue) => {
+        const { history } = props;
+        if (issue) {
+            history.push({
+                pathname: '/' + issue.number + '/issue-details',
+                state: { issue: issue }
+            });
+        }
+
+    }
     useEffect(() => {
-        issuesPerPage(props.match.params.page).then(console.log)
-    });
+        issuesPerPage(props.match.params.page).then(res => {
+            setIssues(res.data)
+        })
+        // eslint-disable-next-line 
+    }, []);
 
     return (<div>
         <div className='labels'>
-        {labels && labels.map(label => (
-            <Label label={label} key={label.id} />
-        ))}
+            {labels && labels.map(label => (
+                <Label label={label} key={label.id} />
+            ))}
+            {issues && issues.map(issue => {
+                return (
+                    <button onClick={NavigateTo.bind(this, issue)}>
+                        test
+                  </button>
+                )
+            })}
         </div>
     </div>);
 };
