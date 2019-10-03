@@ -1,7 +1,6 @@
 import React from "react";
 import './components.css'
 const Label = (props) => {
-    console.log(props.label.color)
     return (
     <div className="labelContainer">
         <a  style={{ backgroundColor: '#'+props.label.color }} className='labelAnchor' href={props.label.url} target="_blank" rel="noopener noreferrer">
