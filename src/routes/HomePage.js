@@ -30,9 +30,9 @@ const HomePage = props => {
 
     return (<div>
         <div className='labels'>
-        {labels && labels.map(label => (
-            <Label label={label} key={label.id} />
-        ))}
+            {labels && labels.map(label => (
+                <Label label={label} key={label.id} />
+            ))}
         </div>
     </div>);
 };
