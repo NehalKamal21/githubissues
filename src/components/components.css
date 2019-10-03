@@ -1,4 +1,10 @@
-.labelAnchor {
+.labelAnchor, .commentAnchor {
+    color: #000;
     padding: 3px;
     text-decoration: none
+}
+
+
+.labelContainer{
+    height: 35px;
 }
