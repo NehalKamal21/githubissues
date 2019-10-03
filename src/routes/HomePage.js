@@ -47,13 +47,6 @@ const HomePage = props => {
             {labels && labels.map(label => (
                 <Label label={label} key={label.id} />
             ))}
-            {issues && issues.map(issue => {
-                return (
-                    <button onClick={NavigateTo.bind(this, issue)}>
-                        test
-                  </button>
-                )
-            })}
         </div>
     </div>);
 };
