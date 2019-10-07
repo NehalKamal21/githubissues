@@ -27,6 +27,8 @@
     }
 }
 
+
+
 @media (min-width: 992px) {
     .container {
         width: 970px;
@@ -38,3 +40,14 @@
         width: 1170px;
     }
 }
+.paginationContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+.pagination {
+    border: 0;
+    background: transparent; 
+    outline: none;  
+}
+
