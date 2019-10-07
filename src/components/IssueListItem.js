@@ -7,7 +7,6 @@ import Label from '../components/LabelComponent';
 import Comment from '../components/CommentComponent';
 
 const IssueListItem = ({ issue, navigateTo }) => {
-    console.log(issue)
     return (
         <div className="list-item-container">
             <MdErrorOutline color="green" />
