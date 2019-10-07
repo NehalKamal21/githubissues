@@ -9,7 +9,7 @@
 
 .title {
     margin-right: 150px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     font-weight: 400;
     line-height: 1.125;
     word-wrap: break-word;
@@ -18,8 +18,12 @@
 .container {
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    border: 5px solid #eee;
+    margin: 0 auto;
+}
+
+.pageContainer {
+    margin: 20px;
 }
 
 @media (min-width: 768px) {
@@ -42,23 +46,25 @@
     }
 }
 
-.home-page{
+.home-page {
     margin: 50px auto 0;
     max-width: 80vw;
 }
-.paginationContainer{
+
+.paginationContainer {
     display: flex;
     justify-content: center;
     padding: 50px;
 }
+
 .pagination {
-    border: 1px solid #eee!important;
+    border: 1px solid #eee !important;
     padding: 5px 10px;
     color: #0366d6;
     font-weight: bold;
     border: 0;
-    background: transparent; 
-    outline: none;  
+    background: transparent;
+    outline: none;
 }
 
 .pagination:hover {
@@ -69,4 +75,11 @@
 .pagination.active {
     color: white;
     background-color: #0366d6;
+}
+
+
+.issue-body {
+    background: #d3d3d340;
+    padding: 10px;
+    margin-bottom: 10px;
 }
