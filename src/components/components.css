@@ -21,6 +21,7 @@
     grid-column-gap: 5px;
     align-items: center;
     border: 1px solid #eee;
+    padding: 0 10px;
 }
 
 .issue-title {
@@ -50,4 +51,10 @@
     grid-column-start: 2;
     color: grey;
     font-size: 15px;
+}
+
+.issueComment{
+    background: #d3d3d340;
+    padding: 10px;
+    margin-bottom: 10px;
 }
