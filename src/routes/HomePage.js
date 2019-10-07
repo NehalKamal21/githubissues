@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { issuesPerPage } from "../api";
-import Label from '../components/LabelComponent';
-import Comment from '../components/CommentComponent'
+import IssueListItem from '../components/IssueListItem';
+import Spinner from '../components/Spinner';
 import './routers.css';
 
 const HomePage = props => {
     const [issues, setIssues] = useState(null)
-    const NavigateTo = (issue) => {
+    const navigateTo = (issue) => {
         const { history } = props;
         if (issue) {
             history.push({
@@ -26,26 +26,10 @@ const HomePage = props => {
 
     return (<div>
         <div className='labels'>
-            {issues && issues.map(issue => {
-                return (
-                    <div key={issue.number}>
-                        <div className='tags'>
-                            {issue.labels.map(label => (
-
-                                <Label label={label} key={label.id} />
-
-                            ))}
-                        </div>
-                        {issue.comments > 0 &&
-                            <button onClick={NavigateTo.bind(this, issue)} key={issue.number}>
-                                <Comment  count={issue.comments} url='' />
-                            </button>}
-
-                    </div>
-                )
-            })}
-
-
+            {issues ? issues.map(issue => <IssueListItem key={issue.number} issue={issue} navigateTo={navigateTo} />)
+                :
+                <Spinner />
+            }
         </div>
     </div>);
 };
