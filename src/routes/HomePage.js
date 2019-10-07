@@ -24,13 +24,13 @@ const HomePage = props => {
         // eslint-disable-next-line 
     }, []);
 
-    return (<div>
-        <div className='labels'>
+    return (<div className="home-page">
+        
             {issues ? issues.map(issue => <IssueListItem key={issue.number} issue={issue} navigateTo={navigateTo} />)
                 :
                 <Spinner />
             }
-        </div>
+
     </div>);
 };
 
