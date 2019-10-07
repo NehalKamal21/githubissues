@@ -1,7 +1,8 @@
 .tags {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 3px;
     height: 100%;
 }
 
@@ -40,14 +41,32 @@
         width: 1170px;
     }
 }
+
+.home-page{
+    margin: 50px auto 0;
+    max-width: 80vw;
+}
 .paginationContainer{
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding: 50px;
 }
 .pagination {
+    border: 1px solid #eee!important;
+    padding: 5px 10px;
+    color: #0366d6;
+    font-weight: bold;
     border: 0;
     background: transparent; 
     outline: none;  
 }
 
+.pagination:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.pagination.active {
+    color: white;
+    background-color: #0366d6;
+}
