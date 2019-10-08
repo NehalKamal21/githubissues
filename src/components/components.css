@@ -1,4 +1,18 @@
-.labelAnchor, .commentAnchor {
+.label-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 3px;
+    height: 100%;
+}
+
+.label{
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.label__anchor, .comment__anchor {
     font-size: 15px;
     color: #000;
     padding: 3px;
@@ -8,13 +22,7 @@
 }
 
 
-.labelContainer{
-    height: 35px;
-    display: flex;
-    align-items: center;
-}
-
-.list-item-container{
+.issue-list-item{
     width: 100%;
     display: grid;
     grid-template-columns: min-content minmax(min-content,max-content) min-content auto 50px;
@@ -24,37 +32,62 @@
     padding: 0 10px;
 }
 
-.issue-title {
+
+.list-item-container:hover{
+    background-color: #eee;
+}
+
+.issue-list-item__title {
     color: black;
     text-decoration: none;
 }
-.issue-title:hover {
+.issue-list-item__title:hover {
     color: blue;
 }
-.issue-title h2{
+.issue-list-item__title h2{
     font-weight: 600;
     font-size: 20px;
 }
 
-.issue-comment {
+.issue-list-item__comment {
     background: none;
     border: none;
     cursor: pointer;
     grid-column-start: 5;
 }
 
-.list-item-container:hover{
-    background-color: #eee;
-}
-
-.issue-details {
+.issue-list-item__details {
     grid-column-start: 2;
     color: grey;
     font-size: 15px;
 }
 
-.issueComment{
-    background: #d3d3d340;
-    padding: 10px;
-    margin-bottom: 10px;
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.pagination__item {
+    border: 1px solid #eee !important;
+    padding: 5px 10px;
+    color: #0366d6;
+    font-weight: bold;
+    border: 0;
+    background: transparent;
+    outline: none;
+    text-decoration: none;
+}
+
+.pagination__item:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.pagination__item--active {
+    color: white;
+    background-color: #0366d6;
 }

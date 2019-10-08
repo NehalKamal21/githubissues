@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { issuesPerPage } from "../api";
-import IssueListItem from "../components/IssueListItem";
+import IssueListItem from "../components/HomePage/IssueListItem";
 import Pagination from '../components/HomePage/Pagination';
 import Spinner from "../components/global/Spinner";
-import "./routes.css";
 
 const HomePage = props => {
     const [issues, setIssues] = useState(null);
     const { history } = props;
 
     const navigateToComments = ({number}) => history.push(`/${number}/issue-details`);
-    ;
+
     useEffect(() => {
         issuesPerPage(props.match.params.page).then(res => {
             setIssues(res.data);
@@ -21,7 +20,7 @@ const HomePage = props => {
 
     return (
         <>
-            <div className="home-page">
+            <div className="page-container">
                 {issues ? (
                     issues.map(issue => (
                         <IssueListItem

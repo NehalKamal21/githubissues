@@ -5,13 +5,13 @@ const pages = [1, 2, 3, 4, 5];
 
 
 const Pagination = () => (
-    <div className="paginationContainer">
+    <div className="pagination">
         {pages.map(page => {
             return (
                 <NavLink
-                    activeClassName="active"
+                    activeClassName="pagination__item--active"
                     to={`/${page}`}
-                    className="pagination"
+                    className="pagination__item"
                     key={page}
                 >
                     {page}

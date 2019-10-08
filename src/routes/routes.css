@@ -1,10 +1,3 @@
-.tags {
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(3, max-content);
-    column-gap: 3px;
-    height: 100%;
-}
 
 
 .title {
@@ -22,62 +15,11 @@
     margin: 0 auto;
 }
 
-.pageContainer {
-    margin: 20px;
-}
-
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
-    }
-}
-
-
-
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
-}
-
-.home-page {
+.page-container {
     margin: 50px auto 0;
     max-width: 80vw;
+    min-width: 500px;
 }
-
-.paginationContainer {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-}
-
-.pagination {
-    border: 1px solid #eee !important;
-    padding: 5px 10px;
-    color: #0366d6;
-    font-weight: bold;
-    border: 0;
-    background: transparent;
-    outline: none;
-    text-decoration: none;
-}
-
-.pagination:hover {
-    background-color: #eee;
-    cursor: pointer;
-}
-
-.pagination.active {
-    color: white;
-    background-color: #0366d6;
-}
-
 
 .issue-body {
     background: #d3d3d340;

@@ -3,25 +3,22 @@ import { withRouter } from 'react-router-dom'
 import { issueDetails, issueComments } from "../api";
 import ReactMarkdown from 'react-markdown';
 import Spinner from '../components/global/Spinner';
-import IssueComment from '../components/IssueComment';
+import IssueComment from '../components/IssueDetails/IssueComment';
 
-import './routes.css'
 
 const IssueDetails = props => {
     const [comments, setComments] = useState(null);
     const [issue, setIssue] = useState(null);
     useEffect(() => {
-        // setIssue(props.location.state.issue)
         issueDetails(props.match.params.issueId).then(res => {
             setIssue(res.data);
         });
         issueComments(props.match.params.issueId).then(res => {
             setComments(res.data);
         });
-        // eslint-disable-next-line
-    }, []);
+    }, [props.match.params.issueId]);
     return (
-        <div className='pageContainer'>
+        <div className='page-container'>
             {
                 (comments && issue) ? <div className='container'>
                     <h1 className='title'>
@@ -33,7 +30,6 @@ const IssueDetails = props => {
                     {comments.map(comment => (
                         <IssueComment key={comment.id} comment={comment.body} />
                     ))}
-
                 </div> :
                     <Spinner />
             }
