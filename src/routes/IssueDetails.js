@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import Spinner from '../components/Spinner';
 import IssueComment from '../components/IssueComment';
 
-import './routers.css'
+import './routes.css'
 
 const IssueDetails = props => {
     const [comments, setComments] = useState(null);

@@ -65,6 +65,7 @@
     border: 0;
     background: transparent;
     outline: none;
+    text-decoration: none;
 }
 
 .pagination:hover {

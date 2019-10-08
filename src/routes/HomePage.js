@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import { issuesPerPage } from "../api";
 import IssueListItem from "../components/IssueListItem";
 import Spinner from "../components/Spinner";
-import "./routers.css";
+import "./routes.css";
 
 const HomePage = props => {
     const [issues, setIssues] = useState(null);
     const pages = [1, 2, 3, 4, 5];
-    const [currentPage, setCurrentPage] = useState(1);
-    const { history, location } = props;
+    const { history } = props;
 
     const navigateToComments = issue => {
         if (issue) {
@@ -18,22 +17,12 @@ const HomePage = props => {
             });
         }
     };
-    const changePage = i => {
-        setCurrentPage(i);
-        if (i) {
-            history.push({
-                pathname: "/" + i
-            });
-        }
-    };
     useEffect(() => {
         issuesPerPage(props.match.params.page).then(res => {
             setIssues(res.data);
         });
-        // eslint-disable-next-line
-    }, [currentPage]);
+    }, [props.match.params.page]);
 
-    const isActive = page => location.pathname.includes(page);
 
     return (
         <>
@@ -53,13 +42,14 @@ const HomePage = props => {
             <div className="paginationContainer">
                 {pages.map(page => {
                     return (
-                        <button
-                            className={`${isActive(page) ? 'active' : ''} pagination`}
+                        <NavLink
+                            activeClassName="active"
+                            to={`/${page}`}
+                            className="pagination"
                             key={page}
-                            onClick={changePage.bind(this, page)}
                         >
                             {page}
-                        </button>
+                        </NavLink>
                     );
                 })}
             </div>
