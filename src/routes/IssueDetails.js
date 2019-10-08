@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom'
 import { issueDetails, issueComments } from "../api";
 import ReactMarkdown from 'react-markdown';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/global/Spinner';
 import IssueComment from '../components/IssueComment';
 
 import './routes.css'

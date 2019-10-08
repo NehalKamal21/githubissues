@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { issuesPerPage } from "../api";
 import IssueListItem from "../components/IssueListItem";
-import Spinner from "../components/Spinner";
+import Pagination from '../components/HomePage/Pagination';
+import Spinner from "../components/global/Spinner";
 import "./routes.css";
 
 const HomePage = props => {
     const [issues, setIssues] = useState(null);
-    const pages = [1, 2, 3, 4, 5];
     const { history } = props;
 
-    const navigateToComments = issue => {
-        if (issue) {
-            history.push({
-                pathname: "/" + issue.number + "/issue-details"
-            });
-        }
-    };
+    const navigateToComments = ({number}) => history.push(`/${number}/issue-details`);
+    ;
     useEffect(() => {
         issuesPerPage(props.match.params.page).then(res => {
             setIssues(res.data);
@@ -35,24 +30,12 @@ const HomePage = props => {
                             navigateTo={navigateToComments}
                         />
                     ))
-                ) : (
+                )
+                    : (
                         <Spinner />
                     )}
-      </div>
-            <div className="paginationContainer">
-                {pages.map(page => {
-                    return (
-                        <NavLink
-                            activeClassName="active"
-                            to={`/${page}`}
-                            className="pagination"
-                            key={page}
-                        >
-                            {page}
-                        </NavLink>
-                    );
-                })}
             </div>
+            <Pagination />
         </>
     );
 };
