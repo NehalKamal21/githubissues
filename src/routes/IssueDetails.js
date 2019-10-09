@@ -20,15 +20,15 @@ const IssueDetails = props => {
     return (
         <div className='page-container'>
             {
-                (comments && issue) ? <div className='container'>
-                    <h1 className='title'>
+                (comments && issue) ? <div className='issue-container'>
+                    <h1 className="issue-title">
                         {issue.title}
                     </h1>
-                    <div className='issue-body'>
-                        <ReactMarkdown source={issue.body} escapeHtml={false} />
+                    <div>
+                        <ReactMarkdown className="border" source={issue.body} escapeHtml={false} />
                     </div>
                     {comments.map(comment => (
-                        <IssueComment key={comment.id} comment={comment.body} />
+                        <IssueComment className="border" key={comment.id} comment={comment.body} />
                     ))}
                 </div> :
                     <Spinner />

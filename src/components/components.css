@@ -32,6 +32,10 @@
     padding: 0 10px;
 }
 
+.issue-list-item:first-of-type{
+    border-top: 70px solid #eee;
+}
+
 
 .list-item-container:hover{
     background-color: #eee;
