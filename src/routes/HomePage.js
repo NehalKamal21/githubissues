@@ -5,11 +5,22 @@ import IssueListItem from "../components/HomePage/IssueListItem";
 import Pagination from '../components/HomePage/Pagination';
 import Spinner from "../components/global/Spinner";
 
+
+
 const HomePage = props => {
     const [issues, setIssues] = useState(null);
     const { history } = props;
 
-    const navigateToComments = ({number}) => history.push(`/${number}/issue-details`);
+    const navigateToComments = ({ number }) => history.push(`/${number}/issue-details`);
+
+    
+    const renderIssues = issues => issues.map(issue => (
+        <IssueListItem
+            key={issue.number}
+            issue={issue}
+            navigateTo={navigateToComments}
+        />
+    ))
 
     useEffect(() => {
         issuesPerPage(props.match.params.page).then(res => {
@@ -19,23 +30,17 @@ const HomePage = props => {
 
 
     return (
-        <>
-            <div className="page-container">
-                {issues ? (
-                    issues.map(issue => (
-                        <IssueListItem
-                            key={issue.number}
-                            issue={issue}
-                            navigateTo={navigateToComments}
-                        />
-                    ))
-                )
-                    : (
-                        <Spinner />
-                    )}
-            </div>
-            <Pagination />
-        </>
+        <div className="page-container">
+            {issues ? (
+                <>
+                    {renderIssues(issues)}
+                    <Pagination />
+                </>
+            )
+                : (
+                    <Spinner />
+                )}
+        </div>
     );
 };
 
