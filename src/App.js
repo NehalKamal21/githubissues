@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 
-import Spinner from './components/Spinner';
+import Spinner from './components/global/Spinner';
 
 const HomePage = lazy(() => import('./routes/HomePage'));
 const IssueDetails = lazy(() => import('./routes/IssueDetails'));
