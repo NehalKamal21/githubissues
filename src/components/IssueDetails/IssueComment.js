@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown';
-
+import './issueComponent.css'
 
 const IssueComment = (props) => (
     <div className='issue-comment border'>
