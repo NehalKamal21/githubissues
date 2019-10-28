@@ -1,0 +1,9 @@
+img {
+    width: 100%;
+}
+
+code, table{
+    width: 100%;
+    display: inline-block;
+    overflow: auto;
+}
